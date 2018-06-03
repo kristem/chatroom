@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>register</title>
+    <script src="/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    function register(username,password,password2) {
+        if(password!=password2){
+            alert("两次输入的密码不一致！");
+        }else{
+            var data = new FormData;
+            data.append('username',username);
+            data.append('passwaord',password);
+            var result = $.ajax({
+                type:'POST',
+                url:"/user/register",
+                data:data
+            }).responseText;
+            console.log(result);
+        }
+    }
+</script>
+    <div class="container">
+        <center><h1>注册 </h1>
+        <div id="register"></div>
+        用户名：<input name="username" type="text"/>
+        <br/>
+        密码： <input name="password" type="password" style="width:300px "/>
+         <br/>
+        请再次输入密码：<input name="password2" type="password" style="width:300px "/>
+        <br/>
+        昵称：<input id="nickname" type="text"/>
+        <br/>
+        <button onclick="register(this.form.username.value,this.form.password.value,this.form.password2.value)">注册</button>
+        <!-- <button onclick="closeWebSocket()">退出聊天室</button> -->
+        </center>
+    </div>
+</body>
+</html>

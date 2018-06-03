@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.redrock.chatroom.dao.AllMessageMapper">
+    <resultMap id="allmessage" type="org.redrock.chatroom.PoJo.AllMessage">
+        <id property="id" column="id" />
+        <result property="sender" column="sender"/>
+        <result property="content" column="content" />
+        <result property="allType" column="all_type"/>
+        <result property="sendTime" column="send_time" />
+    </resultMap>
+
+    <sql id="allmessage_columns">
+        id, sender,content, allType,sendTime
+    </sql>
+
+    <insert id="insertAllMessage" parameterType="org.redrock.chatroom.PoJo.AllMessage" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO allMessage_info(sender,content,all_type,send_time)
+        VALUES (#{sennder},#{content},#{alllType},#{sendTime})
+    </insert>
+
+</mapper>
